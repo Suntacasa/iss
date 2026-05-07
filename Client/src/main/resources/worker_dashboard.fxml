@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="650.0" prefWidth="900.0" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.WorkerDashboardController">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <children>
+        <!-- Header Section -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <children>
+                <Label fx:id="userLabel" text="Logged in as: Worker">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button mnemonicParsing="false" onAction="#handleLogout" style="-fx-background-color: #ffcccc;" text="Logout" />
+            </children>
+        </HBox>
+
+        <SplitPane dividerPositions="0.4" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+            <items>
+                <!-- Top Section: My Tasks -->
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="My Assigned Tasks">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                        </Label>
+                        <StackPane VBox.vgrow="ALWAYS">
+                            <children>
+                                <TableView fx:id="myTasksTable">
+                                    <columns>
+                                        <TableColumn fx:id="colMyTitle" prefWidth="200.0" text="Title" />
+                                        <TableColumn fx:id="colMyDeadline" prefWidth="150.0" text="Deadline" />
+                                        <TableColumn fx:id="colMyPriority" prefWidth="120.0" text="Priority" />
+                                        <TableColumn fx:id="colMyStatus" prefWidth="120.0" text="Status" />
+                                    </columns>
+                                </TableView>
+                                <Label fx:id="noTasksLabel" text="No tasks assigned to you yet." textFill="#888888" visible="false" />
+                            </children>
+                        </StackPane>
+                    </children>
+                </VBox>
+
+                <!-- Bottom Section: Available Tasks -->
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Available Tasks to Take">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="availableTasksTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colAvTitle" prefWidth="180.0" text="Title" />
+                                <TableColumn fx:id="colAvDescription" prefWidth="300.0" text="Description" />
+                                <TableColumn fx:id="colAvDeadline" prefWidth="150.0" text="Deadline" />
+                                <TableColumn fx:id="colAvPriority" prefWidth="120.0" text="Priority" />
+                            </columns>
+                        </TableView>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#handleTakeTask" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #ccffcc;" text="Take Selected Task" />
+                            </children>
+                            <padding>
+                                <Insets top="5.0" />
+                            </padding>
+                        </HBox>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+
+        <!-- Footer Status Area -->
+        <Label fx:id="statusLabel" maxWidth="1.7976931348623157E308" text="Ready" />
+    </children>
+</VBox>
