@@ -1,0 +1,4 @@
+rootProject.name = 'iss'
+include 'Client'
+include 'Common'
+include 'Server'
