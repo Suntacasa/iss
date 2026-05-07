@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- PostgreSQL connection -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/taskmanager</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">12345</property>
+
+        <!-- PostgreSQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- Auto-create/update tables from entity annotations -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Connection pool (built-in, fine for dev; swap for HikariCP in prod) -->
+        <property name="hibernate.connection.pool_size">10</property>
+
+        <!-- Show SQL in console (set to false in prod) -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Mapped entity classes -->
+        <mapping class="domain.User"/>
+        <mapping class="domain.Task"/>
+        <mapping class="domain.Assignment"/>
+        <mapping class="domain.Log"/>
+    </session-factory>
+</hibernate-configuration>
